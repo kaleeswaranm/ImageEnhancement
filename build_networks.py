@@ -1,9 +1,8 @@
-import keras
-from keras import backend as K
-from keras.models import Model
-from keras.layers import Input, Conv2D, BatchNormalization, GlobalAveragePooling2D, Dense, Activation
-from keras.layers.advanced_activations import LeakyReLU
-from keras.applications.vgg19 import VGG19
+from tensorflow import keras
+from tensorflow.keras import backend as K
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, Conv2D, BatchNormalization, GlobalAveragePooling2D, Dense, Activation, LeakyReLU
+from tensorflow.keras.applications.vgg19 import VGG19
 
 def generator_network(image_shape):
 

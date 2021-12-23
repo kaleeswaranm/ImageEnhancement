@@ -1,6 +1,7 @@
 from load_data import data_loader
 from build_networks import generator_network, discriminator_network, end_to_end_gan, content_loss
 from utils import make_dir
+import tensorflow as tf
 from tensorflow.keras.optimizers import Adam
 import numpy as np
 
@@ -37,6 +38,7 @@ def train(batch_size, image_size, steps, ckpt_path):
         disc_loss = 0.5 * np.add(disc_loss_1, disc_loss_2)
 
         discriminator_net.trainable = False
+        tf.config.run_functions_eagerly(True)
 
         end_loss = end_to_end.train_on_batch(degraded_batch, [correct_batch, real_labels])
 
@@ -52,6 +54,6 @@ if __name__ == '__main__':
     batch_size = 4
     image_size = (250,250, 3)
     steps = 10000
-    generator_ckpts = 'generator_checkpoints'
+    generator_ckpts = '../generator_checkpoints'
 
     train(batch_size, image_size, steps, generator_ckpts)

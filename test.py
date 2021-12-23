@@ -1,5 +1,5 @@
 from utils import load_image, make_dir
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 import numpy as np
 from PIL import Image
 import sys
@@ -26,7 +26,7 @@ def test(ckpt_file, img_path, output_directory):
 if __name__ == '__main__':
 
     best_model = 'generator_checkpoints/generator_5300.h5'
-    output_directory = 'output_images'
+    output_directory = '../output_images'
     test_images = glob.glob('content/data/degraded/test/*/*.jpg')
 
     random_images = random.sample(test_images, 10)
